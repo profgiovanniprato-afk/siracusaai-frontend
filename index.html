@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#1A3A5C">
+<title>SiracusaAI — In Arrivo | Assistente AI per Siracusa</title>
+<meta name="description" content="L'assistente AI gratuito per Siracusa, Ortigia e la costa ionica. Presto online. Nel frattempo visita ModicaAI, l'assistente AI gratuito per Modica e il Val di Noto.">
+<meta name="robots" content="index, follow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white:    #FFFFFF;
+  --bg:       #F8F8F8;
+  --sky:      #1A3A5C;
+  --gold:     #B8860B;
+  --gold-lt:  #D4A017;
+  --terra:    #C1440E;
+  --ink:      #1A1A1A;
+  --ink-mid:  #555555;
+  --ink-soft: #999999;
+  --border:   #EBEBEB;
+  --accent:   #1A3A5C;
+}
+
+html, body {
+  height: 100%;
+  background: var(--bg);
+  font-family: 'Outfit', sans-serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* ── Background pattern ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(26,58,92,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 80% at 80% 80%, rgba(26,58,92,0.05) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 580px;
+  width: 100%;
+}
+
+/* ── Logo ── */
+.logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--sky), #2a5a8c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(26,58,92,0.25);
+  flex-shrink: 0;
+}
+
+.logo-text {
+  text-align: left;
+}
+
+.logo-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--sky);
+  line-height: 1;
+}
+
+.logo-name em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+.logo-sub {
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* ── Badge ── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 6px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ink-soft);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 28px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.5; transform: scale(1.4); }
+}
+
+/* ── Headline ── */
+.headline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(42px, 8vw, 68px);
+  font-weight: 600;
+  line-height: 1.05;
+  color: var(--sky);
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.headline em {
+  color: var(--accent);
+  font-style: italic;
+}
+
+/* ── Sottotitolo ── */
+.subtitle {
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--ink-mid);
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 420px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ── Divider ── */
+.divider {
+  width: 48px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  margin: 0 auto 40px;
+  border-radius: 2px;
+}
+
+/* ── Card ModicaAI ── */
+.modicaai-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 28px 32px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  text-align: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.modicaai-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--sky), var(--gold-lt));
+}
+
+.card-eyebrow {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin-bottom: 10px;
+}
+
+.card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--sky);
+  margin-bottom: 8px;
+}
+
+.card-title em {
+  color: var(--gold-lt);
+  font-style: italic;
+}
+
+.card-desc {
+  font-size: 13px;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.card-stats {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--sky);
+  font-family: 'Outfit', sans-serif;
+}
+
+.stat-label {
+  font-size: 10px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.btn-modicaai {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--sky);
+  color: white;
+  text-decoration: none;
+  padding: 12px 22px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(26,58,92,0.25);
+}
+
+.btn-modicaai:hover {
+  background: #243f66;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(26,58,92,0.35);
+}
+
+/* ── Rete ── */
+.rete {
+  font-size: 12px;
+  color: var(--ink-soft);
+  line-height: 1.8;
+}
+
+.rete strong {
+  color: var(--ink-mid);
+  font-weight: 600;
+}
+
+.rete-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  flex-wrap: wrap;
+}
+
+.rete-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px 10px;
+}
+
+.rete-item.active {
+  color: var(--sky);
+  border-color: rgba(26,58,92,0.2);
+  font-weight: 600;
+}
+
+.rete-item .dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--ink-soft);
+}
+
+.rete-item.active .dot {
+  background: #1D9E75;
+}
+
+/* ── Footer ── */
+.footer {
+  margin-top: 48px;
+  font-size: 11px;
+  color: var(--ink-soft);
+}
+
+.footer a {
+  color: var(--sky);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ── Dark mode ── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --white:   #1E2330;
+    --bg:      #151820;
+    --ink:     #E8E8E8;
+    --ink-mid: #AAAAAA;
+    --ink-soft:#777777;
+    --border:  #2E3448;
+    --sky:     #4A8FBF;
+  }
+  body { background: var(--bg); }
+  .logo-name { color: var(--sky); }
+  .headline { color: var(--sky); }
+}
+
+/* ── Mobile ── */
+@media (max-width: 480px) {
+  .modicaai-card { padding: 22px 20px; }
+  .card-stats { gap: 14px; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Logo -->
+  <a class="logo" href="https://www.modicaai.it">
+    <div class="logo-mark">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M12 2C8 2 4 5.5 4 10c0 5.5 8 12 8 12s8-6.5 8-12c0-4.5-4-8-8-8z" fill="white" opacity="0.9"/>
+        <circle cx="12" cy="10" r="3" fill="white" opacity="0.6"/>
+      </svg>
+    </div>
+    <div class="logo-text">
+      <div class="logo-name">Siracusa<em>AI</em></div>
+      <div class="logo-sub">Sicilia · AI</div>
+    </div>
+  </a>
+
+  <!-- Badge -->
+  <div class="badge">
+    <span class="badge-dot"></span>
+    In arrivo
+  </div>
+
+  <!-- Headline -->
+  <h1 class="headline"><em>Siracusa</em><br>sta arrivando</h1>
+
+  <!-- Divider -->
+  <div class="divider"></div>
+
+  <!-- Subtitle -->
+  <p class="subtitle">
+    L'assistente AI gratuito per Siracusa, Ortigia e la costa ionica.<br>
+    Stiamo costruendo qualcosa di straordinario per Siracusa e i suoi visitatori.
+  </p>
+
+  <!-- Card ModicaAI -->
+  <div class="modicaai-card">
+    <div class="card-eyebrow">Nel frattempo · Già online</div>
+    <div class="card-title">Modica<em>AI</em></div>
+    <div class="card-desc">
+      L'assistente AI gratuito per Modica e il Val di Noto — meteo, farmacie, eventi, ristoranti, 
+      carburanti e molto altro in tempo reale. Senza registrazione, 24 ore su 24.
+    </div>
+    <div class="card-stats">
+      <div class="stat">
+        <span class="stat-value">1.300+</span>
+        <span class="stat-label">Utenti</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">21K+</span>
+        <span class="stat-label">Impressioni Google</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">24/7</span>
+        <span class="stat-label">Sempre online</span>
+      </div>
+    </div>
+    <a href="https://www.modicaai.it" class="btn-modicaai">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      Visita ModicaAI
+    </a>
+  </div>
+
+  <!-- Rete -->
+  <div class="rete">
+    <strong>La rete AI per la Sicilia</strong>
+    <div class="rete-dots">
+      <span class="rete-item active"><span class="dot"></span> ModicaAI</span>
+      <span class="rete-item"><span class="dot"></span> RagusaAI</span>
+      <span class="rete-item"><span class="dot"></span> CataniaAI</span>
+      <span class="rete-item"><span class="dot"></span> SiracusaAI</span>
+      <span class="rete-item"><span class="dot"></span> SiciliaAI</span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    © 2026 SiracusaAI · Un progetto <a href="https://www.modicaai.it">ModicaAI</a> · Modica, Sicilia
+  </div>
+
+</div>
+
+</body>
+</html>
